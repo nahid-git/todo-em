@@ -1,11 +1,13 @@
 const express = require('express');
 const mongoose = require("mongoose");
+const cors = require('cors');
 const todoHandler = require('./routeHandler/todoHandler')
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-mongoose.connect("mongodb://localhost/todos")
+mongoose.connect("mongodb://localhost/TodoApp")
     .then(() => console.log('database connect successfully'))
     .catch((err) => console.log(err))
 
@@ -18,6 +20,6 @@ function errorHandle(err, req, res, next) {
     res.status(500).json({error: err})
 }
 
-app.listen(3000, () => {
-    console.log(`Server is running at http://localhost:3000`)
+app.listen(5000, () => {
+    console.log(`Server is running at http://localhost:5000`)
 })
