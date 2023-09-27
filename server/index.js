@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://localhost/TodoApp")
+mongoose.connect("mongodb://127.0.0.1:27017/TodoApp")
     .then(() => console.log('database connect successfully'))
     .catch((err) => console.log(err))
 

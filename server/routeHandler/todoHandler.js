@@ -15,11 +15,12 @@ const Todo = new mongoose.model("Todo", todoSchema);
 
 //post a todo
 router.post('/', async (req, res) => {
-    if(req.body.userObject.date === ''){
-        req.body.userObject.date = Date.now()
+    if (req.body.date === '') {
+        req.body.date = Date.now()
     }
+
     try {
-        const todoData = new Todo(req.body.userObject);
+        const todoData = new Todo(req.body);
         await todoData.save();
         res.status(200).json({
             message: "Todo was inserted successfully",
