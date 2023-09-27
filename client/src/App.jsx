@@ -12,13 +12,12 @@ function App() {
     let handleSubmit = e => {
         e.preventDefault();
 
-        const userObject = {
+        axios.post(`${import.meta.env.VITE_API_KEY}/todo`, {
             title: title,
             description: description,
             status: status,
             date: date,
-        };
-        axios.post(`${import.meta.env.VITE_API_KEY}/todo`, {userObject})
+        })
 
             .then((res) => {
                 swal({
